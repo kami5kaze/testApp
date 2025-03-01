@@ -10,6 +10,9 @@
 .svn/
 migrate_working_dir/
 
+#シークレット情報を含むファイルを無視
+app/lib/api/token.dart
+
 # IntelliJ related
 *.iml
 *.ipr
