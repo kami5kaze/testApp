@@ -1,10 +1,11 @@
-import 'package:app/api/token.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 class ApiRequest {
   final dataProvider = StateProvider<String>((ref) => "No Data");
   final userDataProvider = StateProvider<String>((ref) => "No Data");
+  final token = dotenv.get('GITHUB_TOKEN');
   Future<String> fetchApiRepo(String query, WidgetRef ref) async {
     final data = ref.read(dataProvider);
     final url = Uri.parse(
@@ -14,7 +15,7 @@ class ApiRequest {
       url,
       headers: {
         'Accept': 'application/vnd.github.v3+json',
-        'Authorization': 'token ${Token().token}',
+        'Authorization': 'token $token',
       },
     );
     if (response.statusCode == 200) {
@@ -35,7 +36,7 @@ class ApiRequest {
       url,
       headers: {
         'Accept': 'application/vnd.github.v3+json',
-        'Authorization': 'token ${Token().token}',
+        'Authorization': 'token $token',
       },
     );
     if (response.statusCode == 200) {
