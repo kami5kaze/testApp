@@ -17,20 +17,25 @@ class HomePage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(
-                decoration: const InputDecoration(
-                  hintText: 'キーワードを入力してください',
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    hintText: 'キーワードを入力してください',
+                  ),
+                  controller: textEditingController,
                 ),
-                controller: textEditingController,
               ),
               ElevatedButton(
                 onPressed: () async {
                   final data = await ApiRequest().fetchApiRepo("MukiMuki", ref);
                   ref.read(textProvider.notifier).state = data;
-                  print(text);
+                  print("Home: $text");
+                  print("Home: $data");
                 },
                 child: const Text('Fetch Data'),
               ),
+              Text(text),
             ],
           ),
         ),
