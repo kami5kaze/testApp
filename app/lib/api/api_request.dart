@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 class ApiRequest {
   final token = dotenv.get('GITHUB_TOKEN');
+  //リポジトリ検索
   Future<String> fetchApiRepo(String query, WidgetRef ref) async {
     final url = Uri.parse(
       "https://api.github.com/search/repositories?q=$query",
@@ -22,7 +23,8 @@ class ApiRequest {
     }
   }
 
-  Future<String> fetchApiUser(String query, WidgetRef ref) async {
+  //リポジトリの詳細情報検索
+  Future<String> fetchRepoDetailInfo(String query, WidgetRef ref) async {
     final url = Uri.parse(
       "https://api.github.com/repos/$query",
     );
