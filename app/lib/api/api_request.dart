@@ -24,9 +24,10 @@ class ApiRequest {
   }
 
   //リポジトリの詳細情報検索
-  Future<String> fetchRepoDetailInfo(String query, WidgetRef ref) async {
+  Future<String> fetchRepoDetailInfo(
+      String ownerQuery, String repoQuery, WidgetRef ref) async {
     final url = Uri.parse(
-      "https://api.github.com/repos/$query",
+      "https://api.github.com/repos/$ownerQuery/$repoQuery",
     );
     final response = await http.get(
       url,
@@ -36,7 +37,6 @@ class ApiRequest {
       },
     );
     if (response.statusCode == 200) {
-      print("Apiuser: ${response.body}");
       return response.body;
     } else {
       return "Failed to load data";

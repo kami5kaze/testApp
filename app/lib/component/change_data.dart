@@ -19,4 +19,15 @@ class ChangeData {
       return {};
     }
   }
+
+  Future<Map<String, dynamic>> DetailInfo(String data) async {
+    try {
+      final changeData = jsonDecode(data);
+      return changeData;
+    } catch (e) {
+      print(e);
+      print('Failed to change data');
+      return {};
+    }
+  }
 }
