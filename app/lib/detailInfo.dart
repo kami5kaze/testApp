@@ -9,14 +9,17 @@ class Detailinfo extends ConsumerWidget {
   final String repoQuery;
   final dataProvider = StateProvider<Map<String, dynamic>>((ref) => {});
   final isVisibilityProvider = StateProvider<bool>((ref) => true);
-  Detailinfo({required this.ownerQuery, required this.repoQuery});
+  Detailinfo({
+    required this.ownerQuery,
+    required this.repoQuery,
+  });
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final redata = ref.watch(dataProvider);
     final isVisibility = ref.watch(isVisibilityProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Info'),
+        title: Text(repoQuery),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -44,10 +47,6 @@ class Detailinfo extends ConsumerWidget {
                       padding: EdgeInsets.all(5),
                       child: Image.network(redata['owner']['avatar_url'],
                           width: 200, height: 200),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(5),
-                      child: Text(redata['name']),
                     ),
                     detailInfoTable(redata),
                   ],
