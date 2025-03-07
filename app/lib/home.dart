@@ -9,7 +9,7 @@ class HomePage extends ConsumerWidget {
   final visibilityProvider = StateProvider<bool>((ref) => false);
   final repositoriesProvider =
       StateProvider<Map<String, Map<String, String>>>((ref) => {});
-  final buttonTxtProvider = StateProvider<String>((ref) => 'リポジトリを検索');
+  final buttonTxtProvider = StateProvider<String>((ref) => '検索');
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final TextEditingController textEditingController = TextEditingController();
@@ -18,7 +18,7 @@ class HomePage extends ConsumerWidget {
     final buttonTxt = ref.watch(buttonTxtProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('リポジトリ検索'),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -40,7 +40,7 @@ class HomePage extends ConsumerWidget {
                   onPressed: () async {
                     if (textEditingController.text.isEmpty) {
                       ref.read(visibilityProvider.notifier).state = false;
-                      ref.read(buttonTxtProvider.notifier).state = 'リポジトリを検索';
+                      ref.read(buttonTxtProvider.notifier).state = '検索';
                       return;
                     }
                     final data = await ApiRequest()
