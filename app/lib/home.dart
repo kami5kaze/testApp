@@ -1,6 +1,7 @@
 import 'package:app/api/api_request.dart';
 import 'package:app/component/change_data.dart';
 import 'package:app/component/table.dart';
+import 'package:app/component/text_field.dart';
 import 'package:app/detailInfo.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +28,7 @@ class HomePage extends ConsumerWidget {
             children: [
               Padding(
                 padding: EdgeInsets.all(5),
-                child: TextField(
-                  decoration: const InputDecoration(
-                    hintText: 'キーワードを入力してください',
-                  ),
-                  controller: textEditingController,
-                ),
+                child: textField(textEditingController),
               ),
               Padding(
                 padding: EdgeInsets.all(5),
