@@ -8,7 +8,7 @@ repoTable(Map<String, Map<String, String>> repoData, BuildContext context) {
       TableRow(
         children: [
           Center(
-            child: Text("Owner_icon", style: TextStyle()),
+            child: Text("Owner_icon"),
           ),
           Center(
             child: Text("Owner_name"),
