@@ -12,6 +12,7 @@
 - **Dart:3.5.4**
 # プラットフォーム
 - **ios: 17.5**
+- **android: 14**
 # 使用技術
 - Flutter
 - github API
